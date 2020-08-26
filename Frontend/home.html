@@ -1,0 +1,75 @@
+<html>
+<head>
+</head>
+<body>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+	<div class="container">
+		
+				<form action="/post" method="POST">
+					<h1>Welcome {{username}}</h1>
+					Add a Photo:</br>
+					<input type="text" name = "filepath" placeholder="Filepath" required/> </br>
+					<input type="text" name = "caption" placeholder="Caption" required/> </br>
+					Can all followers view? </br>
+					<input type="radio" name = "isAllFollowers" value="true" checked /> True </br>
+					<input type="radio" name = "isAllFollowers" value="false" /> False </br>
+				
+					<input type="submit" value = Post />
+				</form>
+	
+
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<h1><a href="">Search</a></h1>
+<h1>Here are your photos:</h1>
+
+<table>
+	<th>photoID</th>
+	<th>photoPoster</th>
+	<th>caption</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Posting Date</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line.photoID}}</td>
+		<td>{{line.photoPoster}}</td>
+		<td>{{line.caption}}</td>
+		<td>{{line.firstName}}</td>
+		<td>{{line.lastName}}</td>
+		<td>{{line.postingdate}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+</div>
+
+
+<a href="/logout">Logout</a>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

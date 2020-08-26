@@ -1,0 +1,87 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<h1>Photo #{{post.photoID}}</h1>
+<!-- img needs to be in static folder -->
+<img src="{{post.filepath}}" alt="Photo {{post.photoID}}" width=25%><br>
+
+{{post.firstName}} {{post.lastName}} • {{post.caption}}<br>
+{{post.postingdate}} <br> <br>
+
+<strong>Tags</strong>
+<table>
+	<th>Username</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+
+{% for line in tagged %}
+	<tr>
+		<td>{{line.username}}</td>
+		<td>{{line.firstName}}</td>
+		<td>{{line.lastName}}</td>
+	</tr>
+{% endfor %}
+</table>
+<br>
+
+<strong>Likes</strong>
+<table>
+	<th>Username</th>
+	<th>Rating</th>
+
+{% for line in likees %}
+	<tr>
+		<td>{{line.username}}</td>
+		<td>{{line.rating}}</td>
+	</tr>
+{% endfor %}
+</table>
+<br><br>
+
+{% if is_liked %}
+<a href="/unlike/{{post.photoID}}">Unlike</a>
+<br>
+{% else %}
+<form action="/like/{{post.photoID}}" method="POST">
+	<select name="rating">
+		<option value=1>1</option>
+		<option value=2>2</option>
+		<option value=3>3</option>
+		<option value=4>4</option>
+		<option value=5>5</option>
+	</select>
+	<input type="submit" value="Like Photo" />
+</form>
+{% endif %}
+
+{% if owner %}
+<br>
+<a href="/edit_post/{{post.photoID}}">Edit Post</a>
+<br><br>
+<a href="/delete_post/{{post.photoID}}">Delete Post</a>
+{% if not post.allFollowers %}
+<br><br>
+<a href="/manage_share_post/{{post.photoID}}">Share Post with FriendGroups</a>
+{% endif %}
+{% endif %}
+
+<br><br>
+
+<a href="/search_by_poster">Search Poster</a>
+<br><br>
+<a href="/home">Home</a>
+<br><br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

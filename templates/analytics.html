@@ -1,0 +1,65 @@
+
+<html>
+	<head></head>
+	<body>
+		<style type="text/css">
+				table,
+				th,
+				td {
+					border: 1px solid black;
+				}
+		
+				.padding {
+					margin-top: 25px;
+				}
+		</style>
+		<h1>{{user}}'s Analytics</h1>
+
+		<table>
+			<th>Photos</th>
+			<th>Followers</th>
+			<th>Following</th>
+			<tr>
+				<td>{{num_photos}}</td>
+				<td>{{num_followers}}</td>
+				<td>{{num_following}}</td>
+			</tr>
+		</table>
+
+		<h3>Total Likes for Each Photo</h3>
+		<table>
+			<th>photoID</th>
+			<th>photoPoster</th>
+			<th>Total Likes</th>
+
+			
+			{% for line in total_likes %}
+			<tr>
+				<td><a href="/show_photo/{{line.photoID}}">{{line.photoID}}</a></td>
+				<td>{{line.photoPoster}}</td>
+				<td>{{line.total_rating}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<h3>Most Liked Photos</h3>
+		<table>
+			<th>photoID</th>
+			<th>photoPoster</th>
+			<th>Total Likes</th>
+
+			
+			{% for line in most_liked %}
+			<tr>
+				<td><a href="/show_photo/{{line.photoID}}">{{line.photoID}}</a></td>
+				<td>{{line.photoPoster}}</td>
+				<td>{{line.total_rating}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<br><br>
+    <a href="/home">Home</a>
+    <br><br>
+    <a href="/logout">Logout</a>
+	</body>
+</html>

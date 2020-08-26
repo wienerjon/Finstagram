@@ -1,0 +1,23 @@
+<html >
+  <head></head>
+  <body>
+    <h2>Share Photo #{{photoID}} with FriendGroups</h2>
+    <form action="/share_to_friendGroup/{{photoID}}" method="POST">
+      <h3>Share with:</h3>
+      {% for line in groups %}
+      <input type="radio" name="group" value="{{line.groupName}}|^|{{line.owner_username}}" checked/>Group: {{line.groupName}} Owner: {{line.owner_username}}</br>
+      <!-- <input type="radio" name="group" value="{{line}}" checked/>Group: {{line.groupName}} Owner: {{line.owner_username}}</br> -->
+      {% endfor %}
+      </br>
+      <input type="submit" value="Share">
+      {% if error %}
+      <p class="error"><strong>Error:</strong> {{error}}</p>
+      {% endif %}
+    </form>
+    <br><br>
+    <a href="/home">Home</a>
+    <br><br>
+    <a href="/logout">Logout</a>
+  </body>
+
+</html>

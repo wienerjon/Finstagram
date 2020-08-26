@@ -1,0 +1,26 @@
+
+<html >
+    <head>
+    </head>
+    <body>
+        
+      <h1>Manage Follow Requests</h1>
+      
+
+      <table>
+        <th>Follower</th>
+
+
+        {% for line in pending %}
+          <tr>
+            <td>{{line.username_follower}}</td>
+            <td><a href="/accept_follower/{{line.username_follower}}"><button type="button" class="btn btn-primary">Accept</button></a></td>
+            <td><a href="/reject_follower/{{line.username_follower}}"><button type="button" class="btn btn-primary">Reject</button></a></td>
+          </tr>
+        {% endfor %}
+      </table>
+      <br>
+      <br>
+      <a href="/home">Home</a>
+    </body>
+    </html>

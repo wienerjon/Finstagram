@@ -1,0 +1,30 @@
+<html >
+  <head></head>
+  <body>
+    <h2>Manage FriendGroups</h2>
+    <form action="/create_friendGroup" method="POST">
+      <h3>Create a FriendGroup</h3>
+      <input class="form-control col-2"type="text" name="group_name" placeholder="Group Name" required></br>
+      <input class="form-control col-2"type="text" name="description" placeholder="Description" required></br></br>
+      <input type="submit" value="Create Group">
+      {% if create_error %}
+      <p class="error"><strong>Error:</strong> {{create_error}}</p>
+      {% endif %}
+    </form>
+
+    <form action="/add_member" method="POST">
+      <h3>Add a Member</h3>
+      <input class="form-control col-2"type="text" name="group_name" placeholder="Group Name" required></br>
+      <input class="form-control col-2"type="text" name="member_name" placeholder="Member Username" required></br></br>
+      <input type="submit" value="Add Member">
+      {% if add_member_error %}
+      <p class="error"><strong>Error:</strong> {{add_member_error}}</p>
+      {% endif %}
+    </form>
+    <br><br>
+    <a href="/home">Home</a>
+    <br><br>
+    <a href="/logout">Logout</a>
+  </body>
+
+</html>
